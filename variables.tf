@@ -3,3 +3,9 @@ variable "access_token"{
     type = string
     default = ""
 }
+
+variable "root_password"{
+    description = "password to host"
+    type = string
+    default = ""
+}

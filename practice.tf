@@ -29,17 +29,19 @@ resource "linode_instance" "mochi_home" {
   type   = "g6-nanode-1"
   region = "us-southeast"
 
-  connection {
-    type        = "ssh"
-    user        = "root"
-    password    = "$Mochi Server 2"
-    timeout     = "2m"
-    host        = self.ipv4_address
-    port        = 22
-    
-  }
-
   provisioner "remote-exec" {
+
+    connection {
+      type        = "ssh"
+      user        = "root"
+      password    = var.root_password
+      timeout     = "2m"
+      host        = self.ip_address
+      port        = 22
+      
+    }
+
+  
     inline = [
       "sudo yum update -y",
       "sudo yum install -y git",
